@@ -1,4 +1,16 @@
-<div *ngFor='let bp of blogPostList$ | async' >
-    {{bp._id}} - {{bp.title}}
+<mat-card *ngFor='let bp of blogPostList$ | async' class='example-card' >
+    <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title><a [routerLink]="['/blog-posts',bp._id]">{{bp.title}}</a></mat-card-title>
+        <mat-card-subtitle> Registration {{bp.subtitle}} </mat-card-subtitle>
+    </mat-card-header>
 
-</div> 
+    <img mat-car-image src={{bp.image}} style="width:100%" alt={{bp.title}}>
+    <mat-card-content><p>{{bp.content}}</p></mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button>LIKE</button>
+        <button mat-raised-button>SHARE</button>
+      </mat-card-actions>
+    
+</mat-card> 
