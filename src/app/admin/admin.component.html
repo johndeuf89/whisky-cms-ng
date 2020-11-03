@@ -8,14 +8,17 @@
 
   <mat-card>
     <mat-card-actions>
-      <button (click)="deleteBlogpost(blogposts.selectedOptions.selected)" mat-button>
+      <button mat-button
+       (click)="deleteBlogpost(blogposts.selectedOptions.selected)"
+       *ngIf="blogposts.selectedOptions.selected.length > 0" >
         delete
       <!-- <button  mat-fab color="warn"> -->
         <!-- <mat-icon  >delete</mat-icon> -->
       </button>
-  </mat-card-actions>
-
+    </mat-card-actions>
   </mat-card>
+  
+  <app-blogpost-create></app-blogpost-create>
 
 
  

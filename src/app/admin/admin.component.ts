@@ -17,12 +17,16 @@ export class AdminComponent implements OnInit {
  
   ngOnInit(): void {
    // this.blogposts$ = this.blogPostService.getBlogPost();
+     
+
     this.blogPostService
     .getBlogPost()
+    .subscribe(data => {this.refresh(data)});
+
+    this.blogPostService.handleBlogpostCreated()
     .subscribe(data => {
-      console.log(data);
-      this.allBlogposts = data;
-    });
+      console.log('Admin component received',data)
+    })
   }
 
    deleteBlogpost(selectedOption){
@@ -34,7 +38,7 @@ export class AdminComponent implements OnInit {
      } else {
        return this.blogPostService
        .deleteBlogposts(ids)
-       .subscribe(data => this.refresh(data),err => console.error('erreur lors de la deletion de multiple blogpost',err));
+       .subscribe(data => this.refresh(data),err => this.handleError(err));
      }
     
   };
@@ -46,6 +50,9 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  handleError(error){
+    console.error(error);
+  }
 
 }
 
