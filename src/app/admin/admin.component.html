@@ -1,0 +1,21 @@
+<mat-selection-list #blogposts class="mat-app-background">
+    <mat-list-option *ngFor="let bp of allBlogposts" [value]="bp._id">
+      {{bp.title}} 
+    </mat-list-option>
+  </mat-selection-list>
+  
+  <mat-card>Blog posts selected: {{blogposts.selectedOptions.selected.length}}</mat-card>
+
+  <mat-card>
+    <mat-card-actions>
+      <button (click)="deleteBlogpost(blogposts.selectedOptions.selected)" mat-button>
+        delete
+      <!-- <button  mat-fab color="warn"> -->
+        <!-- <mat-icon  >delete</mat-icon> -->
+      </button>
+  </mat-card-actions>
+
+  </mat-card>
+
+
+ 

@@ -7,12 +7,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BlogpostComponent } from './blogpost/blogpost.component';
 import { BlogpostListComponent } from './blogpost-list/blogpost-list.component';
-import { MaterialModule} from './material.module'
+import { MaterialModule} from './material.module';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { AdminComponent } from './admin/admin.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     BlogpostComponent,
-    BlogpostListComponent
+    BlogpostListComponent,
+    ErrorPageComponent,
+    AdminComponent
   ],
   imports: [
     HttpClientModule,

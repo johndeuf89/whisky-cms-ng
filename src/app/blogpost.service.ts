@@ -9,7 +9,7 @@ import { Blogpost } from './models/blogpost';
   providedIn: 'root'
 })
 export class BlogpostService {
-  baseUrl =  'http://192.168.1.37:3000/api/v1/blog-posts';
+  baseUrl =  'http://localhost:3000/api/v1/blog-posts';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -19,5 +19,14 @@ export class BlogpostService {
 
    getBlogPostById(id):Observable<Blogpost>{
      return this.httpClient.get<Blogpost>(`${this.baseUrl}/${id}`);
+   }    
+   deleteSingleBlogPost(id:string){
+     return this.httpClient.delete(`${this.baseUrl}/${id}`);
    }
-}
+   deleteBlogposts(ids:string[]){
+     const allIds = ids.join(',');
+     return this.httpClient.delete(`${this.baseUrl}/?ids=${allIds}`);
+
+     //localhost:3000/api/v1/blog-posts/?ids=adsd,alkdjas,
+   }
+  }
